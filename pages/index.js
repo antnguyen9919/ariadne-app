@@ -6,7 +6,7 @@ import Link from 'next/link'
 import React, {useState,useEffect } from 'react'
 
 import AriadneLogo from '../public/AriadneLogo.png'
-
+// import Script from 'next/script'
 import { useRouter } from 'next/router';
 import { useAuth } from '../context/authContext';
 
@@ -16,6 +16,8 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+
+  const [loading,setLoading] = useState(false)
 
   const router = useRouter();
 
@@ -34,6 +36,8 @@ console.log(user)
   const onSubmit = async(e) => {
       e.preventDefault()
       setError(null)
+      setLoading(true)
+      console.log("loading: ",loading)
      try{
          await login(email,password).then(user=>{
           router.push('/overview');
@@ -41,9 +45,10 @@ console.log(user)
          
      } catch(err){
       setError("Login failed")
-      setEmail('')
+      // setEmail('')
       setPassword('')
      }
+     setLoading(false)
      
     };    
 
@@ -55,6 +60,7 @@ console.log(user)
 
   return (
     <div className={styles.container}>
+
       <Head>
         <title>Ariadne Client App</title>
         <meta httpEquiv='X-UA-Compatible' content='IE-edge'/>
@@ -75,6 +81,7 @@ console.log(user)
 
 
       </Head>
+     
 
       
       {/* <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous" /> */}
@@ -104,7 +111,7 @@ console.log(user)
      placeholder='Enter email'
      
     aria-describedby="emailHelp"/>
-    {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
+ 
   </div>
   <div className="mb-3">
     <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
@@ -117,10 +124,14 @@ console.log(user)
   </div>
     <div className="row justify-content-between">
       <div className="col-xl-3 col-sm-2 col-4 ">
-      <button type="submit" className="btn btn-primary">Submit</button>
+      <button disabled={loading}
+      
+      
+      type="submit" className="btn btn-primary">Submit</button>
       </div>
       
       <div className="col-xl-3 col-xs-4 col-6   text-end">
+        
         <Link href='/password-recovery'><a >Forgot password</a></Link>
       </div>
     </div>
@@ -136,6 +147,9 @@ console.log(user)
        </div> :null}
       
      </main>
+
+
+     
     </div>
   )
 }

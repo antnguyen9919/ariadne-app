@@ -1,13 +1,16 @@
 import Link from 'next/link'
-import React from 'react'
+import React,{useState} from 'react'
 import { useAuth } from '../context/authContext'
 import { useRouter } from 'next/router';
 // import style from '../styles/Nav.module.css'
 const Nav = () => {
   const router = useRouter();
   const {user,logout} = useAuth();
+  const [loading,setLoading] = useState(false)
   const handleLogout=async ()=>{
+    setLoading(true)
     await logout().then(()=>{
+      setLoading(false)
       router.push('/') 
     })
   }
@@ -46,7 +49,7 @@ const Nav = () => {
      <Link href="/download"><a className="nav-link  " aria-current="page" >Download</a></Link>
      </li>
      <li className="nav-item">
-     <button className='btn btn-danger' onClick={handleLogout} >Log out</button>
+     <button disabled={loading}  className='btn  btn-sm nav-link text-danger' onClick={handleLogout} >Log out</button>
      </li>
    </ul>
    <form className="d-flex">
