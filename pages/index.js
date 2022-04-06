@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import React, {useState,useEffect } from 'react'
 
+import AriadneLogo from '../public/AriadneLogo.png'
 
 import { useRouter } from 'next/router';
 import { useAuth } from '../context/authContext';
@@ -60,7 +61,7 @@ console.log(user)
 
         <meta name="description" content="AriadneMaps Client App " />
         <meta name='viewport' content ='width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no' />
-        <link rel="icon" href="/icon-192x192.png" />
+        <link rel="icon" href="/icon-192x192.png" sizes="16x16"/>
 
         {/* Android  */}
         <meta name='theme-color' content='red'/>
@@ -80,9 +81,16 @@ console.log(user)
 
      <main>
       {!user? <div className="container " style={{height:'100vh'}} >
-         
+      
           <div className="row justify-content-center  align-items-center min-vh-100">
+            
           <h1 className='text-center'>Welcome to AriadneMaps Client App</h1>
+          <div className="row justify-content-center  align-items-center">
+            <div className="col-xl-3 col-4 ">
+            <Image src={AriadneLogo} layout='responsive'  />
+            </div>
+          </div>
+          
           <div className='col-xl-6 col-lg-6 col-md-10 col-sm-10 col-12' >
           {error && <h3 className='text-danger' >{error}</h3>  } 
       <form onSubmit={onSubmit}>
