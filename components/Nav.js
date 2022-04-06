@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import React from 'react'
-// import { Container, Navbar, NavDropdown } from 'react-bootstrap'
-import style from '../styles/Nav.module.css'
+
+// import style from '../styles/Nav.module.css'
 const Nav = () => {
   return (
-    <div className={style.nav}>
+    <div>
        <nav className="navbar sticky navbar-expand-lg navbar-dark bg-black">
   <div className="container">
     <Link href="/"><a className="navbar-brand" >
