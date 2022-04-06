@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 import { useAuth } from '../context/authContext';
 
 
-export default function Home() {
+export default function SignUp() {
   const {user,login} = useAuth()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -82,49 +82,24 @@ console.log(user)
       {!user? <div className="container " style={{height:'100vh'}} >
          
           <div className="row justify-content-center  align-items-center min-vh-100">
+          <div className='col-6 text-center' >
+          
           <h1 className='text-center'>Welcome to AriadneMaps Client App</h1>
-          <div className='col-xl-6 col-lg-6 col-md-10 col-sm-10 col-xs-11' >
-          {error && <h3 className='text-danger' >{error}</h3>  } 
-      <form onSubmit={onSubmit}>
-  <div className="mb-3">
-    <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-    <input type="email" className="form-control" id="exampleInputEmail1"
-     onChange={(event)=> setEmail(event.target.value)}
-     value = {email}
-     name="email"
-     required
-     placeholder='Enter email'
-     
-    aria-describedby="emailHelp"/>
-    {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
-  </div>
-  <div className="mb-3">
-    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-    <input type="password" className="form-control" id="exampleInputPassword1"
-      onChange={(e)=> setPassword(e.target.value)}
-      value = {password}
-      required
-      placeholder='Enter Password'
-    />
-  </div>
-    <div className="row justify-content-between">
-      <div className="col-3">
-      <button type="submit" className="btn btn-primary">Submit</button>
-      </div>
-      
-      <div className="col-3  text-end">
+          <h4>Please contact us to create an Account</h4>
+
+          <div className="row justify-content-center">
+          <div className="col-3  text-end">
         <Link href='/password-recovery'><a>Forgot password</a></Link>
       </div>
-    </div>
-    <div className="row justify-content-end">
     <div className="col-6  text-end">
-        <Link href='/sign-up'><a>Don't have an account? Create here</a></Link>
+        <Link href='/'><a>Go to Login</a></Link>
       </div>
     </div>
-  
-</form>
       </div>
           </div>
+          
+          
+          
        </div> :null}
       
      </main>

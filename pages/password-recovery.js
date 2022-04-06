@@ -9,11 +9,10 @@ import React, {useState,useEffect } from 'react'
 import { useRouter } from 'next/router';
 import { useAuth } from '../context/authContext';
 
-
-export default function Home() {
+export default function PasswordRecovery() {
   const {user,login} = useAuth()
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
   const router = useRouter();
@@ -33,16 +32,16 @@ console.log(user)
   const onSubmit = async(e) => {
       e.preventDefault()
       setError(null)
-     try{
-         await login(email,password).then(user=>{
-          router.push('/overview');
-         })
+    //  try{
+    //      await login(email,password).then(user=>{
+    //       router.push('/overview');
+    //      })
          
-     } catch(err){
-      setError("Login failed")
-      setEmail('')
-      setPassword('')
-     }
+    //  } catch(err){
+    //   setError("Login failed")
+    //   setEmail('')
+    //   setPassword('')
+    //  }
      
     };    
 
@@ -82,8 +81,8 @@ console.log(user)
       {!user? <div className="container " style={{height:'100vh'}} >
          
           <div className="row justify-content-center  align-items-center min-vh-100">
-          <h1 className='text-center'>Welcome to AriadneMaps Client App</h1>
-          <div className='col-xl-6 col-lg-6 col-md-10 col-sm-10 col-xs-11' >
+          <h1 className='text-center'>Password recovery</h1>
+          <div className='col-6' >
           {error && <h3 className='text-danger' >{error}</h3>  } 
       <form onSubmit={onSubmit}>
   <div className="mb-3">
@@ -98,22 +97,14 @@ console.log(user)
     aria-describedby="emailHelp"/>
     {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
   </div>
-  <div className="mb-3">
-    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-    <input type="password" className="form-control" id="exampleInputPassword1"
-      onChange={(e)=> setPassword(e.target.value)}
-      value = {password}
-      required
-      placeholder='Enter Password'
-    />
-  </div>
+ 
     <div className="row justify-content-between">
-      <div className="col-3">
-      <button type="submit" className="btn btn-primary">Submit</button>
+      <div className="col-6">
+      <button type="submit" className="btn btn-primary">Reset Password</button>
       </div>
       
       <div className="col-3  text-end">
-        <Link href='/password-recovery'><a>Forgot password</a></Link>
+        <Link href='/'><a>Go to Login</a></Link>
       </div>
     </div>
     <div className="row justify-content-end">
