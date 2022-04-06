@@ -83,7 +83,7 @@ console.log(user)
          
           <div className="row justify-content-center  align-items-center min-vh-100">
           <h1 className='text-center'>Welcome to AriadneMaps Client App</h1>
-          <div className='col-xl-6 col-lg-6 col-md-10 col-sm-10 col-xs-11' >
+          <div className='col-xl-6 col-lg-6 col-md-10 col-sm-10 col-12' >
           {error && <h3 className='text-danger' >{error}</h3>  } 
       <form onSubmit={onSubmit}>
   <div className="mb-3">
@@ -108,16 +108,16 @@ console.log(user)
     />
   </div>
     <div className="row justify-content-between">
-      <div className="col-3">
+      <div className="col-xl-3 col-sm-2 col-4 ">
       <button type="submit" className="btn btn-primary">Submit</button>
       </div>
       
-      <div className="col-3  text-end">
-        <Link href='/password-recovery'><a>Forgot password</a></Link>
+      <div className="col-xl-3 col-xs-4 col-6   text-end">
+        <Link href='/password-recovery'><a >Forgot password</a></Link>
       </div>
     </div>
-    <div className="row justify-content-end">
-    <div className="col-6  text-end">
+    <div className="row justify-content-xl-end justify-sm-center">
+    <div className="col-xl-6 col-12 text-xl-end text-center">
         <Link href='/sign-up'><a>Don&lsquo;t have an account? Create here</a></Link>
       </div>
     </div>
