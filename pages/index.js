@@ -8,7 +8,7 @@ import React, {useState,useEffect } from 'react'
 import AuthContext from '../context/authContext';
 import { useRouter } from 'next/router';
 import { useAuth } from '../context/authContext';
-// import '../node_modules/bootstrap/dist/js/bootstrap.js';
+
 import Script from 'next/script';
 export default function Home() {
   const {user,login} = useAuth()

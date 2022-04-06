@@ -2,6 +2,8 @@ import React,{useEffect} from 'react'
 import Nav from './Nav'
 import { useRouter } from 'next/router';
 import { useAuth } from '../context/authContext'
+import { Head } from 'next/document';
+import '../node_modules/bootstrap/dist/js/bootstrap.js';
 const Layout = ({children}) => {
   const router = useRouter()
   const {user} = useAuth();
@@ -16,10 +18,14 @@ const Layout = ({children}) => {
 
 
   return (
-    <div>
+    <><Head></Head>
+ <div>
         {!user?null:<Nav/>}
         {children}
     </div>
+    
+    </>
+   
   )
 }
 
