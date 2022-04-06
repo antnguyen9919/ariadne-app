@@ -118,7 +118,7 @@ console.log(user)
     </div>
     <div className="row justify-content-end">
     <div className="col-6  text-end">
-        <Link href='/sign-up'><a>Don't have an account? Create here</a></Link>
+        <Link href='/sign-up'><a>Don&lsquo;t have an account? Create here</a></Link>
       </div>
     </div>
   
